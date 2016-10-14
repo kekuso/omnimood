@@ -116,3 +116,18 @@ h2 {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+.countryView {
+  display: block;
+  border: 2px solid white;
+  width: 850px;
+  height: 600px;
+}
+
+#legend {
+  display: block;
+}
+
+#svg_onClick {
+  display: block;
+}

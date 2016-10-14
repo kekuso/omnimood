@@ -79,18 +79,24 @@ d3.json("json/world-50m.json", function(error, world) {
         .insert("path", countryId)
         .attr("d", this.attributes.d.value)
         .attr("stroke", "red")
+        // .attr("width", '100%')
+        // .attr("height", '100%')
+        // .attr('viewBox','0 0 '+Math.min(width,height)+' '+Math.min(width,height))
+        // .attr('preserveAspectRatio','xMinYMin')
         .style("fill", "steelblue");
 
       var g = svgCountryInfo.selectAll("g");
-      var width = 1600;
-      var height = 800;
+      var width = 850;
+      var height = 600;
       var centroid = path.centroid(d);
+      console.log(centroid);
       var x = width / 2 - centroid[0];
       var y = height / 2 - centroid[1];
 
       g
         .attr("transform", "translate( " + x + "," + y + ")");
-
+      // g
+        // .attr("transform", "translate(" + Math.min(width,height) / 2 + "," + Math.min(width,height) / 2 + ")");
     })
     .append("svg:title")
     .text(function(d) {
