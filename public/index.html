@@ -27,6 +27,7 @@
           <div ng-show="show">
             <svg id="svg_map" width="1560" height="600"></svg>
           </div>
+        </div>
           <div ng-show="!show">
             <globe></globe>
           </div>
@@ -38,11 +39,17 @@
       <div id="emojiListContainer">
           <h2>Emoji List</h2>
           <div ng-controller="emojiController">
-            <div ng-repeat="emoji in Emojis" class="emojiContainer tooltip">
-              <img class="emojiImage tooltip animatedEmojiImage" ng-src="emojis/{{emoji.code.toLowerCase()}}.png" />
+            <div ng-repeat="emoji in Emojis track by $index" class="emojiContainer tooltip">
+              <img ng-class="{ 'animatedEmojiImage': $index >= 55 }" class="emojiImage tooltip" ng-src="emojis/{{emoji.code.toLowerCase()}}.png" />
               <p class="tooltiptext">
                 {{ emoji.name }}
               </p>
+            </div>
+
+            <div ng-repeat="tweet in Tweets" class="tweet">
+              <span>
+                {{ tweet.toString().includes("😂") ? tweet : 'nope' }}
+              </span>
             </div>
           </div>
       </div>
@@ -54,11 +61,6 @@
         </svg>
     </div> -->
     <br>
-    <div ng-controller="tweetController">
-      <!-- <div ng-repeat="tweet in Tweets" class="tweet">
-        {{ tweet }}
-      </div> -->
-    </div>
     <script type="text/javascript" src="js/map.js"></script>
     <script type="text/javascript" src="js/d3.newLegend.js"></script>
   </body>
